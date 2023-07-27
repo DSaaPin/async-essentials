@@ -5,14 +5,31 @@
 // older methods like XMLHttpRequest.
 
 const url = "https://mocki.io/v1/30858b4a-3273-4db6-a102-609710ed2c4c";
+const localUrl = "http://localhost:3000/employees";
 
-fetch(url, { method: "GET" })
-  .then((response) => {
-    return response.json(); // extract JSON from response
-  })
-  .then((data) => {
-    console.log(data); // process/print data
-  })
-  .catch((error) => {
+// Promises approach
+// fetch(url, { method: "GET" })
+//   .then((response) => {
+//     return response.json(); // extract JSON from response
+//   })
+//   .then((data) => {
+//     console.log(data); // process/print data
+//   })
+//   .catch((error) => {
+//     console.log("Error fetching data: ", error);
+//   });
+// END - Promises approach
+
+// Async/Await Approach
+async function fetchData() {
+  try {
+    const response = await fetch(url, { method: "GET" });
+    const data = await response.json(); // extract JSON from response
+    console.log(data);
+  } catch (error) {
     console.log("Error fetching data: ", error);
-  });
+  }
+}
+
+fetchData();
+// END - Async/Await Approach

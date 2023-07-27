@@ -4,7 +4,7 @@
 // executed when the asynchronous task completes.
 
 function fetchData(callback) {
-  // Symulating an asynchronous operation with setTimeout
+  // Simulating an asynchronous operation with setTimeout
   setTimeout(() => {
     const data = { name: "Pepe", age: 30 };
 

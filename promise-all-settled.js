@@ -33,9 +33,9 @@ let allUsers = [];
 
 Promise.allSettled([promise1, promise2])
   .then((responses) => {
-    responses.forEach((e) => {
-      if (e.status === "fulfilled") {
-        allUsers.push(...e.value.users);
+    responses.forEach((response) => {
+      if (response.status === "fulfilled") {
+        allUsers.push(...response.value.users);
       } else if ((e.status = "rejected")) {
         console.log("🔥 Error Retrieving data...");
       }

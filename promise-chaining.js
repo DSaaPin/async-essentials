@@ -3,8 +3,7 @@
 // AFTER ANOTHER. BY RETURNING A NEW PROMISE FROM
 // THE `then()` METHOD.
 
-const url = "https://mocki.io/v1/30858b4a-3273-4db6-a102-609710ed2c4c";
-const localUrl = "http://localhost:3000/employees";
+const url = "http://localhost:3000/employees";
 
 fetch(url, { method: "GET" })
   .then((response) => {

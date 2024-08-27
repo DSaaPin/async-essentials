@@ -18,31 +18,46 @@
 // returns an array of objects, each representing the outcome of
 // and individual promise, whether it fulfilled or rejected.
 
-const firstUrl = "https://mocki.io/v1/109c0187-8cb5-4599-b7a9-fa35c2fb8d6c";
-const secondUrl = "https://mocki.io/v1/0ed8ac8c-ca52-4f4d-9302-564732ee0c0b";
+const employeesUrl = "http://localhost:3000/employees";
+const partnersUrl = "http://localhost:3000/partners";
+const customersUrl = "http://localhost:3000/customers";
 const brokenUrl = "https:BROKEN_URL_EXAMPLE";
 
-const promise1 = fetch(firstUrl).then((res) => {
-  return res.json();
-});
-const promise2 = fetch(secondUrl).then((res) => {
+const employeesPromise = fetch(employeesUrl).then((res) => {
   return res.json();
 });
 
-let allUsers = [];
+const partnersPromise = fetch(partnersUrl).then((res) => {
+  return res.json();
+});
 
-Promise.allSettled([promise1, promise2])
+const customersPromise = fetch(customersUrl).then((res) => {
+  return res.json();
+});
+
+const brokenPromise = fetch(brokenUrl).then((res) => {
+  return res.json();
+});
+
+let contacts = [];
+
+Promise.allSettled([
+  employeesPromise,
+  partnersPromise,
+  customersPromise,
+  brokenPromise,
+])
   .then((responses) => {
     responses.forEach((response) => {
       if (response.status === "fulfilled") {
-        allUsers.push(...response.value.users);
+        contacts.push(...response.value);
       } else if ((response.status = "rejected")) {
         console.log("🔥 Error Retrieving data...");
       }
     });
   })
   .then((e) => {
-    console.log("users: ", allUsers);
+    console.log("users: ", contacts);
   })
   .catch((err) => {
     console.log("Error: ", err);

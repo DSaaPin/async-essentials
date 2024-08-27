@@ -3,17 +3,35 @@
 // as an array. Useful for waiting on several
 // async operations to finish.
 
-const firstUrl = "https://mocki.io/v1/109c0187-8cb5-4599-b7a9-fa35c2fb8d6c";
-const secondUrl = "https://mocki.io/v1/0ed8ac8c-ca52-4f4d-9302-564732ee0c0b";
-const promise1 = fetch(firstUrl);
-const promise2 = fetch(secondUrl);
+const employeesUrl = "http://localhost:3000/employees";
+const partnersUrl = "http://localhost:3000/partners";
+const brokenPartnersUrl = "http:BROKEN_URL";
 
-let allUsers = [];
+const employeesPromise = fetch(employeesUrl);
+const partnersPromise = fetch(partnersUrl);
 
-Promise.all([promise1, promise2])
-  .then((resp) => Promise.all(resp.map((res) => res.json())))
-  .then((data) => {
-    data.forEach((e) => allUsers.push(...e.users));
-    console.log(allUsers);
+const brokenPartnersPromise = () => {
+  return fetch(brokenPartnersUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      return Promise.reject(`Failed to fetch: ${error.message}`);
+    });
+};
+
+let contacts = [];
+
+Promise.all([employeesPromise, partnersPromise, brokenPartnersPromise()])
+  .then((responses) => {
+    // Wait for all JSON responses to be parsed
+    return Promise.all(responses.map((res) => res.json()));
   })
-  .catch((error) => console.error(error));
+  .then((data) => {
+    data.forEach((e) => contacts.push(...e));
+    console.log(contacts);
+  })
+  .catch((error) => console.error("👻 Error: ", error));

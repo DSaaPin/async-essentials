@@ -4,12 +4,11 @@
 // browsers and provides a cleaner and more flexible alternative to
 // older methods like XMLHttpRequest.
 
-const url = "https://mocki.io/v1/30858b4a-3273-4db6-a102-609710ed2c4c";
-const localUrl = "http://localhost:3000/employees";
+const url = "http://localhost:3000/employees";
 
 // Promises approach
 function fetchData() {
-  fetch(localUrl, { method: "GET" })
+  fetch(url, { method: "GET" })
     .then((response) => {
       return response.json(); // extract JSON from response
     })
@@ -22,18 +21,19 @@ function fetchData() {
 }
 
 fetchData();
+
 // END - Promises approach
 
 // Async/Await Approach
-// async function fetchData() {
-//   try {
-//     const response = await fetch(url, { method: "GET" });
-//     const data = await response.json(); // extract JSON from response
-//     console.log(data);
-//   } catch (error) {
-//     console.log("Error fetching data: ", error);
-//   }
-// }
+async function fetchDataAW() {
+  try {
+    const response = await fetch(url, { method: "GET" });
+    const data = await response.json(); // extract JSON from response
+    console.log(data);
+  } catch (error) {
+    console.log("Error fetching data: ", error);
+  }
+}
 
-// fetchData();
+fetchDataAW();
 // END - Async/Await Approach

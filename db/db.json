@@ -1,0 +1,64 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "🧔🏼‍♂️ Martín Pérez",
+      "email": "martin.perez@example.com",
+      "phone": "+598-99-123-456"
+    },
+    {
+      "id": 2,
+      "name": "🙎🏿‍♀️ Lucía Rodríguez",
+      "email": "lucia.rodriguez@example.com",
+      "phone": "+598-98-234-567"
+    },
+    {
+      "id": 3,
+      "name": "👩🏻‍🦰 Sofia Fernández",
+      "email": "Sofia.fernandez@example.com",
+      "phone": "+598-97-345-678"
+    }
+  ],
+
+  "partners": [
+    {
+      "id": 1,
+      "name": "Tecnología Oriental S.A.",
+      "contact_email": "contacto@itcoriental.com.uy",
+      "contact_phone": "+598-2-987-6543"
+    },
+    {
+      "id": 2,
+      "name": "Empresas del Sur",
+      "contact_email": "info@empresasdelsur.com.uy",
+      "contact_phone": "+598-2-876-5432"
+    },
+    {
+      "id": 3,
+      "name": "Innovación Charrúa",
+      "contact_email": "soporte@innovacharrua.com.uy",
+      "contact_phone": "+598-2-765-4321"
+    }
+  ],
+
+  "employees": [
+    {
+      "id": 1,
+      "name": "👩‍🦳 Sara Ruiz.",
+      "contact_email": "sara.ruiz@gmail.com.uy",
+      "contact_phone": "+598-2-987-6543"
+    },
+    {
+      "id": 2,
+      "name": "👩🏽 Ana Ortega",
+      "contact_email": "ana.ortega@gmail.com.uy",
+      "contact_phone": "+598-2-876-5432"
+    },
+    {
+      "id": 3,
+      "name": "🧔🏻 Juan Petri",
+      "contact_email": "juan.petri@gmail.com.uy",
+      "contact_phone": "+598-2-765-4321"
+    }
+  ]
+}
